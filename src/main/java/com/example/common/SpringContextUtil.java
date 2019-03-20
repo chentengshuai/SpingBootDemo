@@ -8,7 +8,7 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package com.example.demo.utils;
+package com.example.common;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
@@ -36,6 +36,18 @@ public class SpringContextUtil implements ApplicationContextAware {
         } catch (Exception e) {
             throw new RuntimeException("获取的Bean不存在！");
         }
+    }
+    //通过class获取Bean.
+
+    /**
+     * 通过clas获取bean
+     *
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public static <T> T getBean(Class<T> clazz) {
+        return getApplicationContext().getBean(clazz);
     }
 
     public static <T> T getBean(String name, Class<T> requiredType)
