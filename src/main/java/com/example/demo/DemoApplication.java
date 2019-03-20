@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.Controller.Hello;
+import com.example.demo.Impl.QQCar;
 import com.example.demo.utils.SpringContextUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.SpringBootConfiguration;
@@ -16,8 +17,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class DemoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class,args);
-        Hello hello=SpringContextUtil.getBean("hello",Hello.class);
-        System.out.println(hello.index());
+        //SpringApplication.run(DemoApplication.class, args);
+        //Hello hello = SpringContextUtil.getBean("hello", Hello.class);
+        //System.out.println(hello.index());
+        QQCar qqCar = SpringContextUtil.getBean("QQCar", QQCar.class);
+        qqCar.drive();
+
     }
 }
