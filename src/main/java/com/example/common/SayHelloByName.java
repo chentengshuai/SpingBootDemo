@@ -15,6 +15,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class SayHelloByName {
 
+    /** 
+    * @Description: 通过输入名字返回 你好：name 
+    * @Param:  
+    * @return:  
+    * @Author: 陈腾帅
+    * @Date: 2019-03-20 
+    */
     public String sayHelloByName(String name) {
         return "你好:" + name;
     }
