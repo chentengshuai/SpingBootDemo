@@ -31,9 +31,6 @@ public class Hello {
     @Autowired
     private Test test;
 
-//    @Autowired
-//    private SayHelloByName sayHelloByName;
-
     /**
     * @Description:   返回HelloChenTengShuai
     * @Param:

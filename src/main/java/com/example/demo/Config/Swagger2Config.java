@@ -40,7 +40,7 @@ public class Swagger2Config {
                 .title("测试接口平台API")
                 .description("cathy demo  API.")
                         .termsOfServiceUrl("Terms of service")
-                        .contact("myeaddress@company.com")
+                        .contact("729027995@qq.com")
                         .version("1.0")
                         .build();
     }
