@@ -16,6 +16,12 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <springfox-swagger.version>2.7.0</springfox-swagger.version>
+        <spare-parts-manager-dubbo.version>0.0.1-SNAPSHOT</spare-parts-manager-dubbo.version>
+        <lombok.project.version>1.16.16</lombok.project.version>
+        <springfox-swagger.version>2.7.0</springfox-swagger.version>
+        <apacheHttpclient.version>4.2.5</apacheHttpclient.version>
+        <alibabaFastjson.version>1.2.39</alibabaFastjson.version>
     </properties>
 
     <dependencies>
@@ -28,6 +34,23 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox-swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox-swagger.version}</version>
         </dependency>
     </dependencies>
 

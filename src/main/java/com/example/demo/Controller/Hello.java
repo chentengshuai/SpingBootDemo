@@ -13,11 +13,18 @@ package com.example.demo.Controller;
 import com.example.common.SayHelloByName;
 import com.example.common.SpringContextUtil;
 import com.example.demo.utils.Test;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.jboss.logging.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+@Api(value = "API - HelloController", description = "用户测试的Hello类")
 @RestController
 public class Hello {
 
@@ -44,9 +51,9 @@ public class Hello {
     @Autowired
     private SayHelloByName sayHelloByName;
 
-    @RequestMapping("/SayHelloAutowired")
-    public String SayHelloChenTengShuai() {
-        return sayHelloByName.sayHelloByName("ChenTengShuai");
+    @RequestMapping(value = "/SayHelloAutowired",method= RequestMethod.GET)
+    public String SayHelloChenTengShuai(@RequestParam(value="name", required=false, defaultValue="ChenTengShuai")String name) {
+        return sayHelloByName.sayHelloByName(name);
     }
 
     /** 
@@ -56,9 +63,14 @@ public class Hello {
     * @Author: 陈腾帅
     * @Date: 2019-03-20 
     */
-    @RequestMapping("/")
-    public String index() {
-        return "默认页面";
+    @RequestMapping(value = "/",method= RequestMethod.GET)
+    @ApiOperation(value = "默认页面", notes = "index")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "name", value = "name", required = false,
+                    dataType = "string", paramType = "query", defaultValue = "默认页面")
+    })
+    public String index(@RequestParam(value="name", required=false, defaultValue="默认页面")String name) {
+        return name;
     }
 
     
@@ -69,9 +81,9 @@ public class Hello {
     * @Author: 陈腾帅
     * @Date: 2019-03-20
     */
-    @RequestMapping("/SayHelloByName")
-    public String sayHelloByName() {
-        String result = test.sayHelloByName("chentengshuai");
+    @RequestMapping(value = "SayHelloByName",method= RequestMethod.GET)
+    public String sayHelloByName(@RequestParam(value="name", required=false, defaultValue="ChenTengShuai")String name) {
+        String result = test.sayHelloByName(name);
         return result;
     }
 }
