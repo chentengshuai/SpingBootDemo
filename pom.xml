@@ -6,13 +6,13 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.3.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.example</groupId>
     <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>demo</name>
-    <description>Demo project for Spring Boot</description>
+    <description>陈腾帅用于学习Sping Boot框架的示例</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -24,24 +24,29 @@
         <alibabaFastjson.version>1.2.39</alibabaFastjson.version>
     </properties>
 
+    <!--添加对SpingBoot的依赖-->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
+        <!--Lombok能以简单的注解形式来简化java代码，提高开发人员的开发效率
+        例如开发中经常需要写的javabean，都需要花时间去添加相应的getter/setter
+        也许还要去写构造器、equals等方法，而且需要维护，当属性多时会出现大量的getter/setter方法
+        这些显得很冗长也没有太多技术含量，一旦修改属性，就容易出现忘记修改对应方法的失误-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.project.version}</version>
         </dependency>
 
+        <!--添加对swgger的依赖-->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -52,6 +57,20 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${springfox-swagger.version}</version>
         </dependency>
+
+        <!--添加redis依赖-->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+
+        <!--添加redis RedisTemplate依赖-->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

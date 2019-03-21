@@ -8,9 +8,19 @@
        http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--通过类的全限定名来声明要创建的bean-->
-    <bean id="hello" class="com.example.demo.Controller.Hello"></bean>
+    <!--<bean id="hello" class="com.example.demo.Controller.Hello"></bean>-->
     <!--<bean id="sayHelloByName" class="com.example.common.SayHelloByName"></bean>-->
-    <bean id="man" class="com.example.demo.utils.Man"></bean>
+    <!--<bean id="test" class="com.example.demo.utils.Test"></bean>-->
+    <!--<bean id="man" class="com.example.demo.utils.Man"></bean>-->
     <!--启动注解扫描-->
-    <context:component-scan base-package="com.example.demo.Impl"/>
+    <!--<context:component-scan base-package="com.example.demo.*"/>-->
+
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath*:application.properties</value>
+            </list>
+        </property>
+    </bean>
 </beans>
