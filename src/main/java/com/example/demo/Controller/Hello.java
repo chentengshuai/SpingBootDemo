@@ -94,7 +94,7 @@ public class Hello {
     public String useRedisIndex() {
         String result = "";
         try {
-            //使用前确保redis服务已经开启
+            //使用前确保redis服务已经开启反对
             //通过地址和端口号进行认证
             Jedis jedis = new Jedis(host, port);
             //存在密码时使用密码认证
