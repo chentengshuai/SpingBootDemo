@@ -31,11 +31,11 @@ public class Hello {
     @Autowired
     private Test test;
 
-    @Value("${redis.host}")
+    @Value("10.135.12.208")
     String host;
-    @Value("${redis.port}")
+    @Value("6379")
     int port;
-    @Value("${redis.password}")
+    @Value("Haier,123")
     String password;
     @Autowired
     private SayHelloByName sayHelloByName;
