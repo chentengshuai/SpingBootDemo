@@ -51,6 +51,7 @@ public class Request10086Demo {
         Map<String, String> data2 = new HashMap<>();
         data2.put("ProductId", "57700000637");
         try {
+
             RequestHttpByClient.requestTo10086("http://112.35.23.155:18083/dmp/terminalNorthApi/device",  data);
             RequestHttpClient.requestTo10086("http://112.35.23.155:18083/dmp/terminalNorthApi/device", "POST", data);
             RequestHttpClient.requestTo10086("http://112.35.23.155:18080/dmp/terminalNorthApi/product/device", "GET", data2);
