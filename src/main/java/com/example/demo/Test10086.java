@@ -1,40 +1,26 @@
 /**
  * Copyright (C), 2019-2019,
- * FileName: Request10086Demo
+ * FileName: Test10086
  * Author:   陈腾帅
- * Date:     2019 3 29 0029 15:30
+ * Date:     2019 4 3 0003 15:11
  * Description:
  * History:
  * <author>          <time>          <version>          <desc>
  * 陈腾帅          修改时间           V1.0              描述
  */
-package com.example.demo.Controller;
+package com.example.demo;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.common.HttpClientUtil;
-import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-@Api(value = "API - Request10086Demo", description = "Request10086Demo")
-@RestController
-public class Request10086Demo {
+public class Test10086 {
 
-    /**
-     * @Description: 请求10086的测试方法
-     * @Param:
-     * @return:
-     * @Author: 陈腾帅
-     * @Date: 2019-03-29
-     */
-    @RequestMapping(value = "requestIndex", method = RequestMethod.GET)
-    public void requestIndex() {
+    public static void main(String[] args) {
         try {
             Map dataReg = new HashMap<String, String>();
             dataReg.put("Timestamp", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX").format(new Date())); //请求的时间戳

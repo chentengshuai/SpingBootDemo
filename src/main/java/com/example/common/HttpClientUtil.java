@@ -312,7 +312,7 @@ public class HttpClientUtil {
                 stringEntity.setContentType(CONTENT_TYPE_JSON_URL);
                 httpPost.setEntity(stringEntity);
             }
-            httpPost.setHeader("Cookie", "td_cookie=1783141882; cnpost=%7B%22username%22%3A%22%E7%AE%A1%E7%90%86%E4%BA%BA%E5%91%98%22%2C%22id%22%3A%22430065424%22%2C%22responseMsg%22%3A%22success%22%2C%22orgId%22%3A%2210006404%22%2C%22orgName%22%3A%22%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8%E6%94%BF%E4%BC%81%E5%88%86%E5%85%AC%E5%8F%B8change%22%2C%22distinctId%22%3A%22100000%22%2C%22distinctTypeId%22%3A%2260%22%2C%22serviceCode%22%3A%22%22%2C%22STAFF_ID%22%3A%224368260%22%2C%22avatar%22%3A%22%22%2C%22success%22%3Atrue%7D; session_id=4028808668fe95680168fe9568d3168; sign=91a02eb9c5d4cf4f14e1cf9520197ca0; JSESSIONID=2DD153F20467550C89FD5985D7FE4B1B");
+            httpPost.setHeader("Cookie", "td_cookie=1783141882; cnpost=%7B%22username%22%3A%22%E7%AE%A1%E7%90%86%E4%BA%BA%E5%91%98%22%2C%22id%22%3A%22430065424%22%2C%22responseMsg%22%3A%22success%22%2C%22orgId%22%3A%2210006404%22%2C%22orgName%22%3A%22%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8%E6%94%BF%E4%BC%81%E5%88%86%E5%85%AC%E5%8F%B8change%22%2C%22distinctId%22%3A%22100000%22%2C%22distinctTypeId%22%3A%2260%22%2C%22serviceCode%22%3A%22%22%2C%22STAFF_ID%22%3A%224368260%22%2C%22avatar%22%3A%22%22%2C%22success%22%3Atrue%7D; session_id=4028808668fe95680168fe9568d3175; sign=e8d25b037e704802316baaf26eedd6ed; JSESSIONID=F30FB7FD42FEC61A4FA448B0819BCA25");
         } catch (Exception e) {
             e.printStackTrace();
         }
