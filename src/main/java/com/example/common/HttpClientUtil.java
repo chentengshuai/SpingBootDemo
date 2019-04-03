@@ -61,7 +61,6 @@ public class HttpClientUtil {
     // HTTP内容类型。相当于form表单的形式，提交数据
     public static final String CONTENT_TYPE_JSON_URL = "application/json;charset=utf-8";
 
-
     // 连接管理器
     private static PoolingHttpClientConnectionManager pool;
 
@@ -69,7 +68,6 @@ public class HttpClientUtil {
     private static RequestConfig requestConfig;
 
     static {
-
         try {
             //System.out.println("初始化HttpClientTest~~~开始");
             SSLContextBuilder builder = new SSLContextBuilder();
@@ -94,7 +92,6 @@ public class HttpClientUtil {
             requestConfig = RequestConfig.custom().setConnectionRequestTimeout(
                     connectionRequestTimeout).setSocketTimeout(socketTimeout).setConnectTimeout(
                     connectTimeout).build();
-
             //System.out.println("初始化HttpClientTest~~~结束");
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
@@ -104,14 +101,12 @@ public class HttpClientUtil {
             e.printStackTrace();
         }
 
-
         // 设置请求超时时间
         requestConfig = RequestConfig.custom().setSocketTimeout(50000).setConnectTimeout(50000)
                 .setConnectionRequestTimeout(50000).build();
     }
 
     public static CloseableHttpClient getHttpClient() {
-
         CloseableHttpClient httpClient = HttpClients.custom()
                 // 设置连接池管理
                 .setConnectionManager(pool)
@@ -120,7 +115,6 @@ public class HttpClientUtil {
                 // 设置重试次数
                 .setRetryHandler(new DefaultHttpRequestRetryHandler(0, false))
                 .build();
-
         return httpClient;
     }
 
@@ -145,15 +139,6 @@ public class HttpClientUtil {
             response = httpClient.execute(httpPost);
             // 得到响应实例
             HttpEntity entity = response.getEntity();
-
-            // 可以获得响应头
-            // Header[] headers = response.getHeaders(HttpHeaders.CONTENT_TYPE);
-            // for (Header header : headers) {
-            // System.out.println(header.getName());
-            // }
-
-            // 得到响应类型
-            // System.out.println(ContentType.getOrDefault(response.getEntity()).getMimeType());
 
             // 判断响应状态
             if (response.getStatusLine().getStatusCode() >= 300) {
@@ -202,15 +187,6 @@ public class HttpClientUtil {
             response = httpClient.execute(httpGet);
             // 得到响应实例
             HttpEntity entity = response.getEntity();
-
-            // 可以获得响应头
-            // Header[] headers = response.getHeaders(HttpHeaders.CONTENT_TYPE);
-            // for (Header header : headers) {
-            // System.out.println(header.getName());
-            // }
-
-            // 得到响应类型
-            // System.out.println(ContentType.getOrDefault(response.getEntity()).getMimeType());
 
             // 判断响应状态
             if (response.getStatusLine().getStatusCode() >= 300) {
@@ -304,7 +280,7 @@ public class HttpClientUtil {
 
                 httpPost.setEntity(stringEntity);
             }
-            httpPost.setHeader("Cookie", "td_cookie=1783141882; cnpost=%7B%22username%22%3A%22%E7%AE%A1%E7%90%86%E4%BA%BA%E5%91%98%22%2C%22id%22%3A%22430065424%22%2C%22responseMsg%22%3A%22success%22%2C%22orgId%22%3A%2210006404%22%2C%22orgName%22%3A%22%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8%E6%94%BF%E4%BC%81%E5%88%86%E5%85%AC%E5%8F%B8change%22%2C%22distinctId%22%3A%22100000%22%2C%22distinctTypeId%22%3A%2260%22%2C%22serviceCode%22%3A%22%22%2C%22STAFF_ID%22%3A%224368260%22%2C%22avatar%22%3A%22%22%2C%22success%22%3Atrue%7D; session_id=4028808668fe95680168fe9568d3168; sign=91a02eb9c5d4cf4f14e1cf9520197ca0; JSESSIONID=2DD153F20467550C89FD5985D7FE4B1B");
+            //httpPost.setHeader("Cookie", "td_cookie=1783141882; cnpost=%7B%22username%22%3A%22%E7%AE%A1%E7%90%86%E4%BA%BA%E5%91%98%22%2C%22id%22%3A%22430065424%22%2C%22responseMsg%22%3A%22success%22%2C%22orgId%22%3A%2210006404%22%2C%22orgName%22%3A%22%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8%E6%94%BF%E4%BC%81%E5%88%86%E5%85%AC%E5%8F%B8change%22%2C%22distinctId%22%3A%22100000%22%2C%22distinctTypeId%22%3A%2260%22%2C%22serviceCode%22%3A%22%22%2C%22STAFF_ID%22%3A%224368260%22%2C%22avatar%22%3A%22%22%2C%22success%22%3Atrue%7D; session_id=4028808668fe95680168fe9568d3168; sign=91a02eb9c5d4cf4f14e1cf9520197ca0; JSESSIONID=2DD153F20467550C89FD5985D7FE4B1B");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -320,7 +296,6 @@ public class HttpClientUtil {
         String parem = convertStringParamter(maps);
         return sendHttpPost(httpUrl, parem);
     }
-
 
     /**
      * 发送 post请求 发送json数据
