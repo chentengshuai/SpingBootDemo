@@ -13,7 +13,6 @@ package com.example.demo.Kafka;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Component;
 
 @Slf4j
 public class KafkaConsumer {
@@ -27,6 +26,6 @@ public class KafkaConsumer {
      */
     @KafkaListener(topics = {"${kafka.consumer.topic}"})
     public void onMessage(String message) {
-        log.info("消费了 Kafka topic messge:{}", message);
+        log.info("消费了topic:{},messge:{}", topic, message);
     }
 }

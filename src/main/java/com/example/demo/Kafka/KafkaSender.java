@@ -31,6 +31,8 @@ public class KafkaSender {
      * 发送消息到kafka,主题为test
      */
     public void sendTest() {
-        kafkaTemplate.send(topic, "KafkaTemplate.sendTest" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")));
+        String message = "KafkaTemplate.sendTest" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+        kafkaTemplate.send(topic, message);
+        log.info("生产了topic:{},messge:{}", topic, message);
     }
 }
