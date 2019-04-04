@@ -237,6 +237,22 @@ public class HttpClientUtil {
         return sendHttpGet(httpGet);
     }
 
+    /**
+     * 发送 get请求
+     *
+     * @param httpUrl 请求地址
+     * @param headers 请求头
+     * @param params  数据
+     */
+    public static String sendHttpGet(String httpUrl, Map<String, String> headers) {
+        // 创建get请求
+        HttpGet httpGet = new HttpGet(httpUrl);
+        for (Map.Entry<String, String> entry : headers.entrySet()) {
+            httpGet.addHeader(entry.getKey(), entry.getValue());
+        }
+        return sendHttpGet(httpGet);
+    }
+
 
     /**
      * 发送 post请求（带文件）
@@ -277,10 +293,33 @@ public class HttpClientUtil {
             if (params != null && params.trim().length() > 0) {
                 StringEntity stringEntity = new StringEntity(params, "UTF-8");
                 stringEntity.setContentType(CONTENT_TYPE_FORM_URL);
-
                 httpPost.setEntity(stringEntity);
             }
-            //httpPost.setHeader("Cookie", "td_cookie=1783141882; cnpost=%7B%22username%22%3A%22%E7%AE%A1%E7%90%86%E4%BA%BA%E5%91%98%22%2C%22id%22%3A%22430065424%22%2C%22responseMsg%22%3A%22success%22%2C%22orgId%22%3A%2210006404%22%2C%22orgName%22%3A%22%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8%E6%94%BF%E4%BC%81%E5%88%86%E5%85%AC%E5%8F%B8change%22%2C%22distinctId%22%3A%22100000%22%2C%22distinctTypeId%22%3A%2260%22%2C%22serviceCode%22%3A%22%22%2C%22STAFF_ID%22%3A%224368260%22%2C%22avatar%22%3A%22%22%2C%22success%22%3Atrue%7D; session_id=4028808668fe95680168fe9568d3168; sign=91a02eb9c5d4cf4f14e1cf9520197ca0; JSESSIONID=2DD153F20467550C89FD5985D7FE4B1B");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sendHttpPost(httpPost);
+    }
+
+    /**
+     * 发送 post请求
+     *
+     * @param httpUrl 地址
+     * @param params  参数(格式:key1=value1&key2=value2)
+     * @param headers 请求头
+     */
+    public static String sendHttpPost(String httpUrl, String params, Map<String, String> headers) {
+        HttpPost httpPost = new HttpPost(httpUrl);// 创建httpPost
+        try {
+            // 设置参数
+            if (params != null && params.trim().length() > 0) {
+                StringEntity stringEntity = new StringEntity(params, "UTF-8");
+                stringEntity.setContentType(CONTENT_TYPE_FORM_URL);
+                httpPost.setEntity(stringEntity);
+            }
+            for (Map.Entry<String, String> entry : headers.entrySet()) {
+                httpPost.addHeader(entry.getKey(), entry.getValue());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -312,7 +351,32 @@ public class HttpClientUtil {
                 stringEntity.setContentType(CONTENT_TYPE_JSON_URL);
                 httpPost.setEntity(stringEntity);
             }
-            httpPost.setHeader("Cookie", "td_cookie=1783141882; cnpost=%7B%22username%22%3A%22%E7%AE%A1%E7%90%86%E4%BA%BA%E5%91%98%22%2C%22id%22%3A%22430065424%22%2C%22responseMsg%22%3A%22success%22%2C%22orgId%22%3A%2210006404%22%2C%22orgName%22%3A%22%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8%E6%94%BF%E4%BC%81%E5%88%86%E5%85%AC%E5%8F%B8change%22%2C%22distinctId%22%3A%22100000%22%2C%22distinctTypeId%22%3A%2260%22%2C%22serviceCode%22%3A%22%22%2C%22STAFF_ID%22%3A%224368260%22%2C%22avatar%22%3A%22%22%2C%22success%22%3Atrue%7D; session_id=4028808668fe95680168fe9568d3175; sign=e8d25b037e704802316baaf26eedd6ed; JSESSIONID=F30FB7FD42FEC61A4FA448B0819BCA25");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sendHttpPost(httpPost);
+    }
+
+
+    /**
+     * 发送 post请求 发送json数据
+     *
+     * @param httpUrl    地址
+     * @param paramsJson 参数(格式 json)
+     */
+    public static String sendHttpPostJson(String httpUrl, String paramsJson, Map<String, String> headers) {
+        HttpPost httpPost = new HttpPost(httpUrl);// 创建httpPost
+        try {
+            // 设置参数
+            if (paramsJson != null && paramsJson.trim().length() > 0) {
+                StringEntity stringEntity = new StringEntity(paramsJson, "UTF-8");
+                stringEntity.setContentType(CONTENT_TYPE_JSON_URL);
+                httpPost.setEntity(stringEntity);
+            }
+            for (Map.Entry<String, String> entry : headers.entrySet()) {
+                //httpPost.addHeader(entry.getKey(), entry.getValue());
+                httpPost.setHeader(entry.getKey(), entry.getValue());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
