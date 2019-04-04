@@ -12,6 +12,7 @@ package com.example.demo.Kafka;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.common.HttpClientUtil;
+import com.example.demo.model.RequestHeader;
 import com.example.demo.model.RequestModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -61,10 +62,17 @@ public class KafkaConsumer {
         log.info("消费了topic:{},messge:{}", topicForPost, message);
         RequestModel requestModel = JSONObject.parseObject(message, RequestModel.class);
         Map<String, String> headers = new HashMap<>();
-        headers.put("Cookie", requestModel.getCookie());
+        if (requestModel.getRequestHeaders() != null) {
+            for (RequestHeader requestHeade : requestModel.getRequestHeaders()) {
+                headers.put(requestHeade.getCode(), requestHeade.getValue());
+            }
+        }
         String result = "";
         if (requestModel.getContentType().equals("application/x-www-form-urlencoded")) {
             result = HttpClientUtil.sendHttpPost(requestModel.getHttpUrl(), requestModel.getData(), headers);
+        }
+        if (requestModel.getContentType().equals("application/json;charset=utf-8")) {
+            result = HttpClientUtil.sendHttpPostJson(requestModel.getHttpUrl(), requestModel.getData(), headers);
         }
         log.info(result);
     }

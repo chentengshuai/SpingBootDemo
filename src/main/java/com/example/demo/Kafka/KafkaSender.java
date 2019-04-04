@@ -54,8 +54,9 @@ public class KafkaSender {
     */
     public void topicForGet(RequestModel requestModel) throws Exception {
         try {
+            String message=JSONObject.toJSONString(requestModel);
             kafkaTemplate.send(topicForGet, requestModel.toString());
-            log.info("生产了topic:{},messge:{}", topicForGet, requestModel.toString());
+            log.info("生产了topic:{},messge:{}", topicForGet, message);
         } catch (Exception e) {
             log.info("KafkaSender.topicForGet" + e.toString());
         }
@@ -72,7 +73,7 @@ public class KafkaSender {
         try {
             String message=JSONObject.toJSONString(requestModel);
             kafkaTemplate.send(topicForPost, message);
-            log.info("生产了topic:{},messge:{}", topicForPost, requestModel.toString());
+            log.info("生产了topic:{},messge:{}", topicForPost, message);
         } catch (Exception e) {
             log.info("KafkaSender.topicForGet" + e.toString());
         }
