@@ -67,7 +67,7 @@ public class KafkaConsumer {
                 headers.put(requestHeade.getCode(), requestHeade.getValue());
             }
         }
-        String result = "";
+        String result = "result";
         if (requestModel.getContentType().equals("application/x-www-form-urlencoded")) {
             result = HttpClientUtil.sendHttpPost(requestModel.getHttpUrl(), requestModel.getData(), headers);
         }
